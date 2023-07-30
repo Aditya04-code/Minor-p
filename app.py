@@ -2,6 +2,7 @@ from operator import index
 import numpy as np
 import pandas as pd
 import pickle
+import joblib
 import streamlit as st
 from PIL import Image
 from sklearn.preprocessing import MinMaxScaler
@@ -27,8 +28,10 @@ def add_bg_from_local(image_file):
 #     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 add_bg_from_local('bg10.jpg')   
 st.markdown("<h1 id='soft_name' style='text-align: center; color: red; font-size: 40px ; text-decoration: underline;'>Smart Rx</h1><br>", unsafe_allow_html=True)
+# loaded_model = open("best.pkl","rb")
+# classifer = pickle.load(loaded_model)
 loaded_model = open("best.pkl","rb")
-classifer = pickle.load(loaded_model)
+classifer = joblib.load(loaded_model)
 st.sidebar.subheader("Upload Symptoms")
 Uploaded_symptoms=st.sidebar.file_uploader("Upload Symptoms",type=['csv'],label_visibility="hidden")
 st.sidebar.subheader("User input Symptoms")
