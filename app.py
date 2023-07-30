@@ -30,6 +30,14 @@ add_bg_from_local('bg10.jpg')
 st.markdown("<h1 id='soft_name' style='text-align: center; color: red; font-size: 40px ; text-decoration: underline;'>Smart Rx</h1><br>", unsafe_allow_html=True)
 loaded_model = open("best.pkl","rb")
 classifer = joblib.load(loaded_model)
+
+
+# Save the model using joblib
+joblib.dump(classifer, 'best.pkl')
+
+# Load the model using joblib
+loaded_model = joblib.load('best.pkl')
+
 st.sidebar.subheader("Upload Symptoms")
 Uploaded_symptoms=st.sidebar.file_uploader("Upload Symptoms",type=['csv'],label_visibility="hidden")
 st.sidebar.subheader("User input Symptoms")
